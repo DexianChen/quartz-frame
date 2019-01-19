@@ -1,6 +1,5 @@
 package com.exc.service.impl;
 
-import com.exc.platform.utils.SchedulerUtil;
 import com.exc.pojo.request.TaskRequestParamVo;
 import com.exc.pojo.task.TaskVo;
 import com.exc.repository.mapper.TaskMapper;
@@ -8,7 +7,6 @@ import com.exc.service.TaskService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
