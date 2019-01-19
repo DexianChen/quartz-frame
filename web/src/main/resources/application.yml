@@ -11,3 +11,17 @@ server:
 spring:
   application:
     name: web
+
+#默认使用配置
+  profiles:
+    active: dev
+  datasource:
+      url: jdbc:mysql://192.168.153.129:3306/quartz
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+
+#公共配置与profiles选择无关
+mybatis:
+  typeAliasesPackage: com.exc.pojo.task
+  mapperLocations: classpath:com.exc.repository.mapper/*.xml

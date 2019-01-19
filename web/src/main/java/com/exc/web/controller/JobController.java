@@ -7,15 +7,11 @@ import com.exc.service.TaskService;
 import org.apache.ibatis.annotations.Param;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@EnableAutoConfiguration
-@ComponentScan(basePackages={"com.exc.service"})//添加的注解
 @RequestMapping("/job")
 public class JobController {
     @Autowired

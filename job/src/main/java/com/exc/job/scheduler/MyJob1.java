@@ -1,4 +1,4 @@
-package com.exc.job;
+package com.exc.job.scheduler;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -13,6 +13,6 @@ public class MyJob1 implements Job{
 
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
-        logger.info("定时任务开始时间：{}", new Date());
+        logger.info("定时任务MyJob1开始时间：{}", new Date());
     }
 }

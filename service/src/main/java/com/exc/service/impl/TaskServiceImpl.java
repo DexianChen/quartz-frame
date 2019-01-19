@@ -8,12 +8,13 @@ import com.exc.service.TaskService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@MapperScan("com.exc.repository.mapper")
+@MapperScan(basePackages = {"com.exc.repository.mapper"})
 public class TaskServiceImpl implements TaskService{
     @Autowired
     private TaskMapper taskMapper;
@@ -26,7 +27,6 @@ public class TaskServiceImpl implements TaskService{
     @Override
     public String startTask(Integer taskId) throws SchedulerException {
         TaskVo taskVo = taskMapper.findById(taskId);
-        SchedulerUtil.executeJob(taskVo);
         return "SUCCESS";
     }
 
