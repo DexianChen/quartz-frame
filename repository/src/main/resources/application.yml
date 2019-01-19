@@ -1,0 +1,24 @@
+##datasource config
+#jdbc:
+#  driverClassName: com.mysql.jdbc.Driver
+#  url: jdbc:mysql://192.168.153.129:3306/quartz?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8
+#  username: root
+#  password: 123456
+#
+##mybatis config
+#mybatis:
+#  typeAliasesPackage: com.exc.repository.mapper
+#  mapperLocations: classpath:mapper/*.xml
+
+#mysql
+spring.datasource.url=jdbc:mysql://192.168.153.129:3306/quartz
+spring.datasource.username=root
+spring.datasource.password=123456
+spring.datasource.driverClassName=com.mysql.jdbc.Driver
+#spring.jpa.database = mysql
+#tomcat 端口
+ server.port=4560
+#Mybatis扫描(配置xml模式使用)     mybatis.mapper-locations=classpath*:mapper/*.xml
+
+#起别名。可省略写mybatis的xml中的resultType的全路径
+mybatis.type-aliases-package=com.exc.pojo

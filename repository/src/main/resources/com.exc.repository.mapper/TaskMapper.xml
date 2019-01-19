@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.exc.repository.mapper.TaskMapper" >
+
+    <resultMap id="taskMap" type="com.exc.repository.vo.TaskVo" >
+        <id column="taskId" property="taskId" jdbcType="INTEGER" />
+        <result column="taskName" property="taskName" jdbcType="VARCHAR" />
+        <result column="taskClass" property="taskClass" jdbcType="VARCHAR" />
+        <result column="runType" property="runType" jdbcType="INTEGER" />
+        <result column="runStatus" property="runStatus" jdbcType="INTEGER" />
+        <result column="loadTime" property="loadTime" jdbcType="DATETIME" />
+    </resultMap>
+
+    <sql id="column" >
+        taskId, taskName, taskClass, runType, runStatus, loadTime
+    </sql>
+
+    <select id="getTaskList" resultMap="taskMap" >
+        select
+        <include refid="column" />
+        from TB_TASK
+    </select>
+
+    <select id="findById" parameterType="Integer" resultMap="taskMap">
+        SELECT
+        <include refid="column" />
+        from TB_TASK
+    </select>
+
+</mapper>
