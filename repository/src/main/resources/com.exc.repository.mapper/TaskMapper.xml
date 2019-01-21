@@ -3,28 +3,44 @@
 <mapper namespace="com.exc.repository.mapper.TaskMapper" >
 
     <resultMap id="taskMap" type="com.exc.pojo.task.TaskVo" >
-        <id column="taskId" property="taskId" jdbcType="INTEGER" />
-        <result column="taskName" property="taskName" jdbcType="VARCHAR" />
-        <result column="taskClass" property="taskClass" jdbcType="VARCHAR" />
-        <result column="runType" property="runType" jdbcType="INTEGER" />
-        <result column="runStatus" property="runStatus" jdbcType="INTEGER" />
-        <result column="loadTime" property="loadTime" jdbcType="TIMESTAMP" />
+        <id column="TASK_ID" property="taskId" jdbcType="INTEGER" />
+        <result column="TASK_NAME" property="taskName" jdbcType="VARCHAR" />
+        <result column="TASK_CLASS" property="taskClass" jdbcType="VARCHAR" />
+        <result column="RUN_TYPE" property="runType" jdbcType="INTEGER" />
+        <result column="RUN_STATUS" property="runStatus" jdbcType="INTEGER" />
+        <result column="EXECUTE_CRON" property="executeCron" jdbcType="VARCHAR" />
+        <result column="LOAD_TIME" property="loadTime" jdbcType="TIMESTAMP" />
     </resultMap>
 
     <sql id="column" >
-        taskId, taskName, taskClass, runType, runStatus, loadTime
+        TASK_ID, TASK_NAME, TASK_CLASS, RUN_TYPE, RUN_STATUS, EXECUTE_CRON, LOAD_TIME
     </sql>
 
     <select id="getTaskList" resultMap="taskMap" >
-        select
+        SELECT
         <include refid="column" />
-        from TB_TASK
+        FROM TB_TASK;
+    </select>
+
+    <select id="getTaskListByTypeAndStatus" resultMap="taskMap">
+        SELECT
+        <include refid="column" />
+        FROM TB_TASK WHERE RUN_TYPE = 0 AND RUN_STATUS = 0;
     </select>
 
     <select id="findById" parameterType="Integer" resultMap="taskMap">
         SELECT
         <include refid="column" />
-        from TB_TASK
+        from TB_TASK WHERE TASK_ID = #{taskId}
     </select>
 
+    <insert id="insertTask" parameterType="com.exc.pojo.request.TaskRequestParamVo">
+        INSERT INTO TB_TASK VALUES(NULL, #{taskName}, #{taskClass}, #{runType}, #{runStatus}, #{executeCron}, NULL, NOW());
+    </insert>
+
+    <update id="updateTask"  parameterType="com.exc.pojo.request.TaskRequestParamVo">
+        UPDATE TB_TASK SET TASK_NAME = #{taskName}, TASK_CLASS = #{taskClass},
+        RUN_TYPE = #{runType}, RUN_STATUS = #{runStatus}, EXECUTE_CRON = #{executeCron}, LOAD_TIME = #{loadTime}
+        WHERE TASK_ID = #{taskId};
+    </update>
 </mapper>

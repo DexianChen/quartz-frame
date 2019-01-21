@@ -9,7 +9,7 @@ import java.util.List;
 public interface TaskService {
     List<TaskVo> getTaskList();
 
-    String startTask(Integer taskId) throws SchedulerException;
+    void startTask(Integer taskId) throws SchedulerException;
 
     void updateTask(TaskRequestParamVo paramVo);
 

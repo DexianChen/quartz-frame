@@ -11,5 +11,6 @@ public class TaskRequestParamVo {
     private String taskClass;
     private Integer runType;
     private Integer runStatus;
+    private String executeCron;
     private Date loadTime;
 }

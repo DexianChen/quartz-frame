@@ -12,14 +12,16 @@ spring:
   application:
     name: scheduler
 
-##datasource config
-#jdbc:
-#  driverClassName: com.mysql.jdbc.Driver
-#  url: jdbc:mysql://192.168.153.129:3306/quartz?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8
-#  username: root
-#  password: 123456
-#
-##mybatis config
-#mybatis:
-#  typeAliasesPackage: com.exc.repository.mapper
-#  mapperLocations: classpath*:com.exc.repository.mapper/*.xml
+#默认使用配置
+  profiles:
+    active: dev
+  datasource:
+      url: jdbc:mysql://192.168.153.129:3306/quartz??useUnicode=true&characterEncoding=utf8&autoReconnect=true
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+
+#公共配置与profiles选择无关
+mybatis:
+  typeAliasesPackage: com.exc.pojo.task
+  mapperLocations: classpath:com.exc.repository.mapper/*.xml

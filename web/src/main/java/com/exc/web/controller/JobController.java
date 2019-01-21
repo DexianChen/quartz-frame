@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:8088", maxAge = 3600)
 @RestController
 @RequestMapping("/job")
 public class JobController {
@@ -18,7 +19,7 @@ public class JobController {
     private TaskService taskService;
 
     @GetMapping("/start")
-    public ResultVo startJob(@PathVariable Integer taskId){
+    public ResultVo startJob(Integer taskId){
         try {
             taskService.startTask(taskId);
             return new ResultVo("SUCCESS", "启动定时任务成功");
@@ -63,14 +64,13 @@ public class JobController {
     }
 
     @PostMapping("/insert")
-    public ResultVo insertTask(@PathVariable TaskRequestParamVo paramVo){
+    public ResultVo insertTask(@RequestBody TaskRequestParamVo paramVo){
         try {
             taskService.insertTask(paramVo);
             return new ResultVo("SUCCESS", "插入定时任务成功");
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return new ResultVo("FAIL", "插入定时任务失败");
     }
 }
