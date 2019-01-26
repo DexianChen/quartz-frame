@@ -64,4 +64,9 @@ public class TaskServiceImpl implements TaskService{
         }
     }
 
+    @Override
+    public List<TaskVo> getTaskListByTypeAndStatus() {
+        return taskMapper.getTaskListByTypeAndStatus();
+    }
+
 }

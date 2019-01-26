@@ -16,4 +16,6 @@ public interface TaskService {
     void deleteTask(Integer[] taskIds);
 
     void insertTask(TaskRequestParamVo paramVo);
+
+    List<TaskVo> getTaskListByTypeAndStatus();
 }

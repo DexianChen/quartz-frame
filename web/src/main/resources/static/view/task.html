@@ -45,7 +45,7 @@
                             <div class="box-tools pull-right">
                                 <div class="has-feedback">
 							        定时任务名称：<input ng-model="searchEntity.name">
-                                    定时任务类：<input ng-model="searchEntity.firstChar">
+                                    定时任务对象：<input ng-model="searchEntity.firstChar">
                                     <button class="btn btn-default" ng-click="reloadList()">查询</button>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
 			                              </th> 
 										  <th class="sorting_asc">序号</th>
 									      <th class="sorting">定时任务名称</th>
-									      <th class="sorting">定时任务类名</th>
+									      <th class="sorting">定时任务对象</th>
 										  <th class="sorting">启动类型</th>
 										  <th class="sorting">运行状态</th>
 										  <th class="sorting">定时任务表达式</th>
@@ -75,15 +75,15 @@
 									      <td>{{entity.taskName}}</td>
 		                                  <td>{{entity.taskClass}}</td>
 										  <td>
-											  <span ng-if="entity.runType == 0">手动</span>
-											  <span ng-if="entity.runType == 1">自动</span>
+											  <span ng-if="entity.runType == 0">自动</span>
+											  <span ng-if="entity.runType == 1">手动</span>
 										  </td>
 										  <td>
 											  <span ng-if="entity.runStatus == 0">启动</span>
 											  <span ng-if="entity.runStatus == 1">停止</span>
 										  </td>
 										  <td>{{entity.executeCron}}</td>
-										  <td pattern="yyyy-MM-dd HH:mm:ss" type="date">{{entity.loadTime}}</td>
+										  <td>{{entity.loadTime}}</td>
 		                                  <td class="text-center">                                           
 		                                 	  <button type="button" class="btn bg-blue btn-xs" ng-click="findOne(entity.taskId)" data-toggle="modal" data-target="#editModal">修改</button>
 											  <button type="button" class="btn bg-olive btn-xs" ng-click="startTask(entity.taskId)">启动</button>
