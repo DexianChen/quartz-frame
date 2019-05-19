@@ -23,25 +23,23 @@
 </head>
 <body ng-app="quartz" ng-controller="taskController" ng-init="" class="hold-transition skin-red sidebar-mini">
   <!-- .box-body -->
-                    <div class="box-header with-border">
-                        <h3 class="box-title">定时任务列表</h3>
-                    </div>
+				  <div align="center">
+					  <h3 ng-if="selected.Env != null">当前所连接的是{{selected.Env}}环境</h3>
+					  <h3 ng-if="selected.Env == null">请选择连接的环境</h3>
+				  </div>
+
+				  <div align="right">
+					  <select ng-model="selected.Env">
+						  <option selected="selected" value="dev">dev</option>
+						  <option value="test1">test1</option>
+					  </select>
+				  </div>
 
                     <div class="box-body">
 
                         <!-- 数据表格 -->
                         <div class="table-box">
 
-                            <!--工具栏-->
-                            <div class="pull-left">
-                                <div class="form-group form-inline">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="新建" ng-click="entity={}" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
-                                        <button type="button" class="btn btn-default" title="删除" ng-click="delete()" ><i class="fa fa-trash-o"></i> 删除</button>
-                                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="box-tools pull-right">
                                 <div class="has-feedback">
 							        定时任务名称：<input ng-model="searchEntity.name">
